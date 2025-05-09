@@ -1,6 +1,7 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
+const itemRouter = require("./routes/itemRouter.jsx")
 
 //MIDDLEWARE
 app.use(cors());
@@ -8,9 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //ROUTES
-app.get("/", (req, res) => {
-    res.send("HELLO WORLD");
-})
+app.use("/items", itemRouter);
+
+//ERROR HANDLING
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).json({message: err.message})
+});
 
 
 //CONNECTING
