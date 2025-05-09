@@ -14,7 +14,7 @@ datasource db {
   url      = env("DATABASE_URL_LOCAL")
 }
 
-model HiddenObject {
+model Item {
   id     Int    @id @default(autoincrement())
   name   String
   xstart Int
