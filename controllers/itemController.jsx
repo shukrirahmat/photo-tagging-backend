@@ -20,7 +20,12 @@ const verifyCoordinate = asynchandler(async (req, res) => {
 });
 
 const getItemList = asynchandler(async (req, res) => {
-  const itemList = await db.getItemList();
+  const itemList = [];
+  const items = await db.getItemList();
+  items.forEach((item) => {
+    itemList.push(item.name)
+  })
+
   return res.json(itemList);
 })
 
