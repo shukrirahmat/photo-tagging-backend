@@ -19,6 +19,12 @@ const verifyCoordinate = asynchandler(async (req, res) => {
   }
 });
 
+const getItemList = asynchandler(async (req, res) => {
+  const itemList = await db.getItemList();
+  return res.json(itemList);
+})
+
 module.exports = {
-    verifyCoordinate
+    verifyCoordinate,
+    getItemList
 }
