@@ -13,7 +13,7 @@ const verifyCoordinate = asynchandler(async (req, res) => {
     ypos >= item.ystart &&
     ypos <= item.yend
   ) {
-    return res.json({found: true, xstart: item.xstart, xend: item.xend, ystart: item.ystart, yend: item.yend});
+    return res.json({found: true, item});
   } else {
     return res.json({found: false});
   }
