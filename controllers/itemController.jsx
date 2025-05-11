@@ -2,9 +2,9 @@ const asynchandler = require("express-async-handler");
 const db = require("../db/queries");
 
 const verifyCoordinate = asynchandler(async (req, res) => {
-  const xpos = parseInt(req.body.xpos);
-  const ypos = parseInt(req.body.ypos);
-  const itemName = req.body.itemName;
+  const xpos = parseInt(req.query.xpos);
+  const ypos = parseInt(req.query.ypos);
+  const itemName = req.query.itemName;
 
   const item = await db.getItem(itemName);
   if (
