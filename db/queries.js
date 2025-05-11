@@ -16,6 +16,9 @@ async function getItemList() {
     const itemList = prisma.item.findMany({
         select: {
             name: true
+        },
+        orderBy: {
+            id: 'asc'
         }
     })
 
