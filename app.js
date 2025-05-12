@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const itemRouter = require("./routes/itemRouter.jsx")
+const itemRouter = require("./routes/itemRouter.js");
+const rankingRouter = require("./routes/rankingRouter.js");
+const reviewRouter = require("./routes/reviewRouter.js");
 
 //MIDDLEWARE
 app.use(cors());
@@ -10,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROUTES
 app.use("/items", itemRouter);
+app.use("/rankings", rankingRouter);
+app.use("/reviews", reviewRouter);
 
 //ERROR HANDLING
 app.use((err, req, res, next) => {
