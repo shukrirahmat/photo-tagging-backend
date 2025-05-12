@@ -16,7 +16,7 @@ const addNewRecords = asynchandler(async (req, res) => {
     const time = parseFloat(req.body.time);
     const comment = req.body.comment? req.body.comment: null
     const record = await db.addRecord(time, username, comment, new Date());
-    res.json(ranking);
+    res.json(record);
 })
 
 module.exports = {
