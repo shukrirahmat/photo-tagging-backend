@@ -23,16 +23,10 @@ model Item {
   yend   Int
 }
 
-model Ranking {
-  id Int @id @default(autoincrement())
-  username String
-  time Float
-  dateAdded DateTime
-}
-
-model Review {
-  id Int @id @default(autoincrement())
-  writer String
-  content String
+model Records {
+  id        Int      @id @default(autoincrement())
+  username String?
+  comment   String?
+  time      Float
   dateAdded DateTime
 }

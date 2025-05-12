@@ -26,7 +26,12 @@ async function getItemList() {
 }
 
 async function getRanking() {
-    const ranking = await prisma.ranking.findMany({
+    const ranking = await prisma.records.findMany({
+        where: {
+            username: {
+                not: null
+            }
+        },
         orderBy: {
             time: 'asc'
         }
@@ -35,45 +40,38 @@ async function getRanking() {
     return ranking;
 }
 
-async function addRanking(username, time, dateAdded) {
-    const newRanking = await prisma.ranking.create({
-        data: {
-            username,
-            time,
-            dateAdded,
-        }
-    })
-
-    return newRanking;
-}
-
-async function getReview() {
-    const reviews = await prisma.review.findMany({
+async function getComments() {
+    const comments = await prisma.records.findMany({
+        where: {
+            comment: {
+                not: null
+            }
+        },
         orderBy: {
             dateAdded: 'desc'
         }
     })
 
-    return reviews;
+    return comments
 }
 
-async function addReview(writer, content, dateAdded) {
-    const review = await prisma.review.create({
+async function addRecord(time, username, comment, dateAdded) {
+    const record = await prisma.records.create({
         data: {
-            writer,
-            content,
+            time,
+            username,
+            comment,
             dateAdded
         }
     })
 
-    return review;
+    return record
 }
 
 module.exports = {
     getItem,
     getItemList,
     getRanking,
-    addRanking,
-    getReview,
-    addReview
+    getComments,
+    addRecord,
 }
