@@ -27,6 +27,6 @@ model Records {
   id        Int      @id @default(autoincrement())
   username String?
   comment   String?
-  time      Float
+  time      Int
   dateAdded DateTime
 }

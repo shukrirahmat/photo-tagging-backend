@@ -13,7 +13,7 @@ const getComments = asynchandler(async (req, res) => {
 
 const addNewRecords = asynchandler(async (req, res) => {
     const username = req.body.username? req.body.username : null
-    const time = parseFloat(req.body.time);
+    const time = parseInt(req.body.time);
     const comment = req.body.comment? req.body.comment: null
     const record = await db.addRecord(time, username, comment, new Date());
     res.json(record);
